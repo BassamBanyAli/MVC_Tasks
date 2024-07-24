@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index - Second Controller</h2>
+
+
+@if (!string.IsNullOrEmpty(ViewBag.Name))
+{
+    <div>
+        <h3>Your Name is: @ViewBag.Name</h3>
+    </div>
+}

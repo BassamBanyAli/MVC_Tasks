@@ -1,0 +1,10 @@
+﻿@model List<WebApplication8.Models.User>
+
+<h2>User Info</h2>
+
+<ul>
+    @foreach (var user in Model)
+    {
+        <li>@user.Name - @user.Email</li>
+    }
+</ul>

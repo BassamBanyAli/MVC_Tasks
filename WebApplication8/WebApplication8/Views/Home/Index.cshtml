@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Home Index</h2>
+
+@using (Html.BeginForm("SubmitData", "Second", FormMethod.Post))
+{
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" />
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+
+}
+
+<p>
+    <a href="@Url.Action("Index", "Second")">Go to Second Controller</a>
+</p>
