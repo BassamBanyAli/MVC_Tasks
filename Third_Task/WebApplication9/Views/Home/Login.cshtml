@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="login-container">
+    <h2>Login</h2>
+    <h2>@ViewBag.Message</h2>
+    @using (Html.BeginForm("SubmitLogin", "Home"))
+    {
+        <input type="email" id="Email" name="Email" placeholder="Email" required>
+        <input type="password" id="Password" name="Password" placeholder="Password" required>
+        <input type="submit" value="Login">
+    }
+</div>
+
+
