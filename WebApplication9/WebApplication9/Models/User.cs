@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication10.Models
+namespace WebApplication9.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class User
     {
-        public int ProductID { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public decimal Price { get; set; }
-        public int StockQuantity { get; set; }
-
+        public int UserID { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        public string PasswordHash { get; set; }
+        public string ImagePath { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
     }
 }
