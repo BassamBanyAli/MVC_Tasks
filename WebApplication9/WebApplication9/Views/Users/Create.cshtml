@@ -7,7 +7,7 @@
 <div class="container mt-4">
     <h2 class="text-center">Create New User</h2>
 
-    @using (Html.BeginForm("Create", "Users", FormMethod.Post, new { @class = "form-horizontal" }))
+    @using (Html.BeginForm("Create", "Users", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
@@ -38,8 +38,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ImagePath, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.ImagePath, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })
+                <input type="file" name="ImagePath" class="form-control" />
             </div>
         </div>
 

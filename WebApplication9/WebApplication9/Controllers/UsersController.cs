@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -24,12 +25,25 @@ namespace WebApplication9.Controllers
             return View();
 
         }
-         [HttpPost]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserName,Email,PasswordHash,ImagePath")] User user)
+        public ActionResult Create(User user, HttpPostedFileBase ImagePath)
         {
             if (ModelState.IsValid)
             {
+                if (ImagePath != null && ImagePath.ContentLength > 0)
+                {
+                    // Generate a unique filename to avoid conflicts
+                    var fileName = Path.GetFileName(ImagePath.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
+
+                    // Save the file
+                    ImagePath.SaveAs(path);
+
+                    // Optionally, store the file path in the database
+                    user.ImagePath = fileName;
+                }
+
                 db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -37,7 +51,7 @@ namespace WebApplication9.Controllers
 
             return View(user);
         }
-        
+
         public ActionResult Delete()
         {
             return View();
